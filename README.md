@@ -157,3 +157,6 @@ centroAcopio1.asignarCamion(camion1)
 centroAcopio1.calcularReciclaje()
 
 ```
+
+Este es solo un ejemplo básico de cómo se pueden utilizar las clases y métodos. Puedes explorar más funcionalidades y realizar modificaciones según tus necesidades.
+Te recomiendo usar la implementacion que he realizado al final en el archivo main.py que se encuentra en la rama "Master"
