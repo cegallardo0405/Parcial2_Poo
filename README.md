@@ -7,8 +7,8 @@
 ## Descripción
 
 Trash City es un sistema de gestión de recolección de basura en una ciudad. Permite asignar rutas, camiones, conductores, asistentes y centros de acopio. Además, realiza un seguimiento de la carga recogida en cada turno y calcula el total de vidrio reciclado en los centros de acopio.
-Clases
-Clase principal: Trashcity
+# Clases
+## Clase principal: Trashcity
 
 Esta clase representa el sistema Trash City. Solo puede existir una instancia de esta clase. Tiene los siguientes atributos:
 
@@ -23,7 +23,7 @@ Además, cuenta con los siguientes métodos:
     asignarCamion(camion): Asigna un camión a la lista de camiones.
     asignarCentroAcopio(centroAcopio): Asigna un centro de acopio a la lista de centros de acopio.
 
-Clase Camion
+## Clase Camion
 
 Esta clase representa un camión de basura. Tiene los siguientes atributos:
 
@@ -40,7 +40,7 @@ Además, cuenta con los siguientes métodos:
     removeObserver(observer): Elimina un observador (centro de acopio) de la lista de observadores.
     notifyObservers(): Notifica a los observadores (centros de acopio) cuando se actualiza el camión.
 
-Clase Turno
+## Clase Turno
 
 Esta clase representa un turno de recolección de basura. Tiene los siguientes atributos:
 
@@ -56,14 +56,14 @@ Además, cuenta con los siguientes métodos:
     asignarUbicacion(puntogeografico): Asigna una ubicación a la lista de ubicaciones.
     asignarCarga(carga): Asigna una carga al turno.
 
-Clase PuntoGeografico
+## Clase PuntoGeografico
 
 Esta clase representa un punto geográfico con coordenadas de latitud y longitud. Tiene los siguientes atributos:
 
     latitud: Latitud del punto.
     longitud: Longitud del punto.
 
-Clase Ruta
+## Clase Ruta
 
 Esta clase representa una ruta de recolección de basura. Tiene los siguientes atributos:
 
@@ -75,7 +75,7 @@ Además, cuenta con el siguiente método:
 
     asignarPunto(punto): Asigna un punto geográfico a la lista de puntos.
 
-Clase Carga
+## Clase Carga
 
 Esta clase representa la carga recolectada durante un turno. Tiene los siguientes atributos:
 
@@ -85,7 +85,7 @@ Esta clase representa la carga recolectada durante un turno. Tiene los siguiente
     t_organico: Cantidad de residuos orgánicos recolectados.
     t_metal: Cantidad de metal recolectado.
 
-Clase CargaDecorator
+## Clase CargaDecorator
 
 Esta clase es un decorador para la clase Carga y permite calcular el peso total de la carga recolectada. Tiene un atributo carga que es una instancia de la clase Carga. Cuenta con el método calcularPesoTotal() para calcular el peso total de la carga.
 Clase Persona
@@ -95,7 +95,7 @@ Esta clase representa una persona y tiene los siguientes atributos:
     _nombre: Nombre de la persona.
     _id: Identificador de la persona.
 
-Clase Conductor y Asistente
+## Clase Conductor y Asistente
 
 Estas clases son subclases de la clase Persona y representan un conductor y un asistente, respectivamente. Heredan los atributos y métodos de la clase Persona.
 Clase CentroAcopio
