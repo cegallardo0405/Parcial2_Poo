@@ -3,8 +3,8 @@
 ### Código estudiantil: 200176533
 ### Correo: cegallardo@uninorte.edu.co
 
-Trash City
-Descripción
+# Trash City
+## Descripción
 
 Trash City es un sistema de gestión de recolección de basura en una ciudad. Permite asignar rutas, camiones, conductores, asistentes y centros de acopio. Además, realiza un seguimiento de la carga recogida en cada turno y calcula el total de vidrio reciclado en los centros de acopio.
 Clases
