@@ -79,12 +79,6 @@ class Turno:
     def asignarCarga(self, carga):
         self.carga = carga
 
-    # def asignarRuta(self, ruta):
-    #     self.ruta = ruta
-    # def asignarCamion(self, camion):
-    #     self.camion = camion
-    # def asignarAsistente(self, asistente):
-    #     self.asistentes.append(asistente)
 
 # Clase de Ubicacion
 class PuntoGeografico:
