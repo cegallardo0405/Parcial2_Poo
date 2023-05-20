@@ -1,4 +1,3 @@
-
 # Declaramos las clases necesarias para el proyecto
 #Clase principal
 class Trashcity:
@@ -170,9 +169,12 @@ class CentroAcopio:
                 self.tot_vidrio += turno.carga.t_vidrio
 
             print("El acumulado de vidrio en el camion {} es de {} kg".format(camion.id, self.tot_vidrio))
+
+#___________________________________________________________________________________________________________________________
+
 # Instanciamos las clases
 
-
+Empresa = Trashcity("Trashcity")
 # Instanciamos los puntos geograficos
 punto1 = PuntoGeografico(10.0, 10.0)
 punto2 = PuntoGeografico(20.0, 20.0)
@@ -219,6 +221,7 @@ camion1.asignarAsistente(maria, jose)
 centroAcopio1 = CentroAcopio("Centro de Acopio 1", "Calle 1 # 1 - 1")
 centroAcopio1.asignarCamion(camion1)
 
+#____________________________________________________________________________________________________________________________________________________________________________
 
 # Imprimimos los datos
 
@@ -235,6 +238,120 @@ for camion in centroAcopio1.camiones:
     for turno in camion.turnos:
         print("El camion {} en el turno {} recolectó {} kg de vidrio, {} kg de papel, {} kg de plastico, {} kg de organico y {} kg de metal".format(camion.id, turno.id, turno.carga.t_vidrio, turno.carga.t_papel, turno.carga.t_plastico, turno.carga.t_organico, turno.carga.t_metal))
 centroAcopio1.calcularReciclaje()
+
+#____________________________________________________________________________________________________________________________________________________________________________
+
+# Pruebas unitarias
+import unittest
+from unittest.mock import MagicMock
+
+
+class TestTrashcity(unittest.TestCase):
+
+    def test_asignar_ruta(self):
+        trashcity = Trashcity("City")
+        ruta = Ruta(1, "Ruta 1", [])
+        trashcity.asignarRuta(ruta)
+        self.assertIn(ruta, trashcity.rutas)
+
+    def test_asignar_camion(self):
+        trashcity = Trashcity("City")
+        camion = Camion(1)
+        trashcity.asignarCamion(camion)
+        self.assertIn(camion, trashcity.camiones)
+
+    def test_asignar_centro_acopio(self):
+        trashcity = Trashcity("City")
+        centro_acopio = CentroAcopio("Centro de Acopio 1", "Dirección 1")
+        trashcity.asignarCentroAcopio(centro_acopio)
+        self.assertIn(centro_acopio, trashcity.centroAcopio)
+
+
+class TestCamion(unittest.TestCase):
+
+    def test_asignar_turno(self):
+        camion = Camion(1)
+        turno = Turno(1, "10:00", "12:00", None, None)
+        camion.asignarTurno(turno)
+        self.assertIn(turno, camion.turnos)
+
+    def test_asignar_conductor(self):
+        camion = Camion(1)
+        conductor = Conductor("Juan", 123)
+        camion.asignarConductor(conductor)
+        self.assertEqual(camion.conductor, conductor)
+
+    def test_asignar_asistente(self):
+        camion = Camion(1)
+        asistente1 = Asistente("María", 456)
+        asistente2 = Asistente("Pedro", 789)
+        camion.asignarAsistente(asistente1, asistente2)
+        self.assertEqual(camion.asistente1, asistente1)
+        self.assertEqual(camion.asistente2, asistente2)
+
+    def test_add_observer(self):
+        camion = Camion(1)
+        observer = MagicMock()
+        camion.addObserver(observer)
+        self.assertIn(observer, camion.observers)
+
+    def test_remove_observer(self):
+        camion = Camion(1)
+        observer = MagicMock()
+        camion.addObserver(observer)
+        camion.removeObserver(observer)
+        self.assertNotIn(observer, camion.observers)
+
+
+class TestTurno(unittest.TestCase):
+
+    def test_asignar_ubicacion(self):
+        turno = Turno(1, "10:00", "12:00", None, None)
+        ubicacion = PuntoGeografico(10.0, 10.0)
+        turno.asignarUbicacion(ubicacion)
+        self.assertIn(ubicacion, turno.ubicacion)
+
+    def test_asignar_carga(self):
+        turno = Turno(1, "10:00", "12:00", None, None)
+        carga = Carga(10, 20, 30, 40, 50)
+        turno.asignarCarga(carga)
+        self.assertEqual(turno.carga, carga)
+
+
+class TestCentroAcopio(unittest.TestCase):
+
+    def test_asignar_camion(self):
+        centro_acopio = CentroAcopio("Centro de Acopio 1", "Dirección 1")
+        camion = Camion(1)
+        centro_acopio.asignarCamion(camion)
+        self.assertIn(camion, centro_acopio.camiones)
+
+    def test_update(self):
+        centro_acopio = CentroAcopio("Centro de Acopio 1", "Dirección 1")
+        camion = Camion(1)
+        centro_acopio.asignarCamion(camion)
+
+        # Realiza pruebas en la lógica de actualización aquí
+
+        observer = MagicMock()
+        camion.addObserver(observer)
+        camion.notifyObservers()
+        observer.update.assert_called_once()
+
+
+class TestPersona(unittest.TestCase):
+
+    def test_persona(self):
+        persona = Persona("Juan", 123)
+        self.assertEqual(persona._nombre, "Juan")
+        self.assertEqual(persona._id, 123)
+
+
+# Agrega más pruebas para las otras clases según sea necesario
+
+
+if __name__ == '__main__':
+    unittest.main()
 
 
 
