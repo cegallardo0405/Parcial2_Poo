@@ -112,3 +112,48 @@ Además, cuenta con los siguientes métodos:
     asignarCamion(camion): Asigna un camión al centro de acopio y agrega el centro de acopio como observador del camión.
     update(): Actualiza el centro de acopio cuando se actualiza un camión. Calcula el reciclaje acumulado de vidrio.
     calcularReciclaje(): Calcula el reciclaje acumulado de vidrio en los camiones asignados al centro de acopio.
+
+# Uso del código
+
+Aquí hay un ejemplo de cómo se puede utilizar el código:
+
+```
+# Crear una instancia de Trashcity
+ciudad = Trashcity("Mi Ciudad")
+
+# Crear una ruta
+ruta1 = Ruta(1, "Ruta 1", [])
+ruta1.asignarPunto(PuntoGeografico(123.45, 67.89))
+ruta1.asignarPunto(PuntoGeografico(54.32, 98.76))
+
+# Asignar la ruta a Trashcity
+ciudad.asignarRuta(ruta1)
+
+# Crear un camión
+camion1 = Camion("C1")
+
+# Asignar un conductor y dos asistentes al camión
+conductor1 = Conductor("Juan", 1)
+asistente1 = Asistente("Pedro", 2)
+asistente2 = Asistente("María", 3)
+camion1.asignarConductor(conductor1)
+camion1.asignarAsistente(asistente1, asistente2)
+
+# Crear un turno
+turno1 = Turno(1, "09:00", "12:00", ruta1, Carga(10, 20, 30, 40, 50))
+turno1.asignarUbicacion(PuntoGeografico(12.34, 56.78))
+turno1.asignarUbicacion(PuntoGeografico(90.12, 34.56))
+
+# Asignar el turno al camión
+camion1.asignarTurno(turno1)
+
+# Crear un centro de acopio
+centroAcopio1 = CentroAcopio("Centro Acopio 1", "Dirección 1")
+
+# Asignar el camión al centro de acopio
+centroAcopio1.asignarCamion(camion1)
+
+# Realizar acciones en el centro de acopio (cálculo de reciclaje, etc.)
+centroAcopio1.calcularReciclaje()
+
+```
